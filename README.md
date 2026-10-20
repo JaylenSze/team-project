@@ -11,11 +11,18 @@ Project Ideas:
 - Friend Sport Matching
 - UofT Profle
   - Wordle idea with U of T Profs
+NEW!
+- Courses to Map
+  - Use Some map API and LLM for reasoning?
 
 User Stories:
 - 
 
 API Information:
+- We like images API's?
+- Also looking at food API's
+- I think using multiple API's would be interesting
+-
 
 Current Functionality:
 
