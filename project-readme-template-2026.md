@@ -26,7 +26,7 @@ Analysing what kinds of job students can do based on the courses they are taking
 
 ### As a job seeker, I want to keep track of what jobs I apply to.
 
-### As a job seeker, I want to compare different offer.
+### As a job seeker, I want to compare different offers.
 
 ### As a student, I want to see what skills I obtain from courses.
 
@@ -42,7 +42,7 @@ Analysing what kinds of job students can do based on the courses they are taking
 
 ### Use Case 2
 
-### Use Case 3
+### Display job reviews and company ratings, and be able to review offers.
 
 (Add additional use cases as needed.)
 

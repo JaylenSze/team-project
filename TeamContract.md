@@ -83,5 +83,3 @@ Jaylen Sze
 Zhirun Yang
 Marco Mao
 Aidan Zhang
-
-Marco Mao
