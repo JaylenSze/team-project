@@ -22,17 +22,17 @@ Analysing what kinds of job students can do based on the courses they are taking
 
 ## User Stories
 
-### As a job seeker, I want to upload my resume and see what job I can do.
+1. As a job seeker, I want to upload my resume and see what job I can do.
 
-### As a job seeker, I want to keep track of what jobs I apply to.
+2. As a job seeker, I want to keep track of what jobs I apply to.
 
-### As a job seeker, I want to compare different offer.
+3. As a job seeker, I want to compare different offer.
 
-### As a student, I want to see what skills I obtain from courses.
+4. As a student, I want to see what skills I obtain from courses.
 
-### As a student, I want to know what courses I need to take to get a specific job.
+5. As a student, I want to know what courses I need to take to get a specific job.
 
-### As a student, I want to see what job i can do with my courses.
+6. As a student, I want to see what job i can do with my courses.
 
 ---
 
