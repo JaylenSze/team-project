@@ -1,40 +1,125 @@
-# Team Project
+### GOAL FOR THIS WEEK:
 
-Project Ideas:
-- UofT Maple
-- UofT Coursle
-  - Wordle idea with U of T Courses
-- UofT Majorle
-  - Wordle idea with U of T Majors
-- (Weather App )le
-  - Guess where the weather is
-- Friend Sport Matching
-- UofT Profle
-  - Wordle idea with U of T Profs
-NEW!
-- Courses to Map
-  - Use Some map API and LLM for reasoning?
+- Finish this template!
+- Decide everyone's User Stories
 
-User Stories:
-- 
+Stretch
+- Finish UML Diagram
 
-API Information:
-- We like images API's?
-- Also looking at food API's
-- I think using multiple API's would be interesting
--
+# Project Name
 
-Current Functionality:
+## Team Information
+Team Name: 44 +
+
+### Team Members
+- Zhirun Yang
+- Jaylen Sze
+- Aidan Zhang
+- Marco Mao
+- Baoyu Heng
+
+---
+
+## Project Description
+### Domain
+Jobs
+
+Analysing what kinds of job students can do based on the courses they are taking.
+
+---
+
+## User Stories
+
+1. As a job seeker, I want to upload my resume to see what jobs I can do.
+
+2. As a job seeker, I want to keep track of what jobs I apply to.
+
+3. As a job seeker, I want to compare different offer.
+
+4. As a student, I want to see what skills I obtain from courses.
+
+5. As a student, I want to know what courses I need to take to get a specific job.
+
+6. As a student, I want to see what job i can do with my courses.
+
+---
+
+## Use Cases
+
+### Use Case 1
+Use Case: Upload Resume
+
+Primary actor: User uploading their resume
+
+Preconditions:
+
+The user is logged in.
 
 
-Please keep this up-to-date with information about your project throughout the term.
+Trigger: The user uploads their resume to the system.
 
-The readme should include information such as:
-- a summary of what your application is all about
-- a list of the user stories, along with who is responsible for each one
-- information about the API(s) that your project uses 
-- screenshots or animations demonstrating current functionality
+Success outcome: Their resume is saved and their skills are added to their profile.
 
-By keeping this README up-to-date,
-your team will find it easier to prepare for the final presentation
-at the end of the term.
+Main success scenario:
+
+The user uploads their resume
+System checks if they already have a resume uploaded, updates it with the new resume
+System saves their resume.
+System updates their skills from the resume
+
+### Use Case 2
+
+### Use Case 3
+
+(Add additional use cases as needed.)
+
+---
+
+## Minimal Viable Product (MVP)
+
+| Team Member | MVP Use Case |
+|-------------|--------------|
+| Name | Use Case |
+| Name | Use Case |
+| Name | Use Case |
+
+---
+
+## Entities
+
+### Entity 1
+
+### Entity 2
+
+(Add additional entities as needed.)
+
+---
+
+## API Usage
+
+**API Name:**
+
+**Documentation:** [Link]
+
+**How it is used in the program:**
+
+---
+
+## Design Diagrams
+
+### UML Class Diagram
+
+
+### Sequence Diagrams
+
+---
+
+## How to Run
+
+[Instructions for running the program.]
+
+---
+
+## Notes
+
+[Any additional project information.]
