@@ -22,7 +22,7 @@ Analysing what kinds of job students can do based on the courses they are taking
 
 ## User Stories
 
-1. As a job seeker, I want to upload my resume and see what job I can do.
+1. As a job seeker, I want to upload my resume to see what jobs I can do.
 
 2. As a job seeker, I want to keep track of what jobs I apply to.
 
@@ -39,6 +39,25 @@ Analysing what kinds of job students can do based on the courses they are taking
 ## Use Cases
 
 ### Use Case 1
+Use Case: Upload Resume
+
+Primary actor: User uploading their resume
+
+Preconditions:
+
+The user is logged in.
+
+
+Trigger: The user uploads their resume to the system.
+
+Success outcome: Their resume is saved and their skills are added to their profile.
+
+Main success scenario:
+
+The user uploads their resume
+System checks if they already have a resume uploaded, updates it with the new resume
+System saves their resume.
+System updates their skills from the resume
 
 ### Use Case 2
 
