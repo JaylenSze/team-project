@@ -1,3 +1,11 @@
+### GOAL FOR THIS WEEK:
+
+- Finish this template!
+- Decide everyone's User Stories
+
+Stretch
+- Finish UML Diagram
+
 # Project Name
 
 ## Team Information
