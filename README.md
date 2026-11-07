@@ -1,4 +1,4 @@
-### GOAL FOR THIS WEEK:
+# GOAL FOR THIS WEEK:
 
 - Finish this template!
 - Decide everyone's User Stories
@@ -10,6 +10,7 @@ Stretch
 
 ## Team Information
 Team Name: 44 +
+(Sum of our favorite numbers)
 
 ### Team Members
 - Zhirun Yang
@@ -30,17 +31,17 @@ Analysing what kinds of job students can do based on the courses they are taking
 
 ## User Stories
 
-1. As a job seeker, I want to upload my resume to see what jobs I can do.
+1. As a job seeker, I want to upload my resume to update my skills.
 
 2. As a job seeker, I want to keep track of what jobs I apply to.
 
 3. As a job seeker, I want to compare different offer.
 
-4. As a student, I want to see what skills I obtain from courses.
+4. As a job seeker, I want to see what jobs I can do with my skills
 
-5. As a student, I want to know what courses I need to take to get a specific job.
+5. As a student, I want to see what skills I obtain from courses.
 
-6. As a student, I want to see what job i can do with my courses.
+6. As a student, I want to know what courses I need to take to get a specific job.
 
 ---
 
