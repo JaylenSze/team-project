@@ -35,7 +35,7 @@ Analysing what kinds of job students can do based on the courses they are taking
 
 2. As a job seeker, I want to keep track of what jobs I apply to.
 
-3. As a job seeker, I want to compare different offer.
+3. As a job seeker, I want to compare different jobs.
 
 4. As a job seeker, I want to see what jobs I can do with my skills
 
