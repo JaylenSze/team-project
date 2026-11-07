@@ -17,7 +17,7 @@ Team Name: 44 +
 - Jaylen Sze
 - Aidan Zhang
 - Marco Mao
-- Baoyu Heng
+- Yuheng Bao
 
 ---
 
@@ -71,6 +71,28 @@ System updates their skills from the resume
 ### Use Case 2
 
 ### Use Case 3
+
+### Use Case 4
+
+### Use Case 5
+
+### Use Case 6
+
+NAME: Recommend a job
+
+PRIMACY ACTOR: Courses
+
+PRECONDITION: There are several courses already added in the Course.
+
+TRIGGER: The user click the predict bottom.
+
+MAIN SUCCESS SCENARIO:
+1, The student opens the Career Recommendations page.
+2, The system displays the student’s course list.
+3, The student confirms or updates the courses to include.
+4, The system identifies the knowledge and skills covered by those courses and matches them to career requirements.
+5, The system displays relevant careers and explains how they relate to the selected courses.
+6, The student selects a career to view its responsibilities, related courses, relevant skills, and skills they may need to develop.
 
 (Add additional use cases as needed.)
 
