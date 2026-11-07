@@ -16,7 +16,7 @@ Team Name: 44 +
 - Jaylen Sze
 - Aidan Zhang
 - Marco Mao
-- yuHeng Bao
+- Yuheng Bao
 
 ---
 
