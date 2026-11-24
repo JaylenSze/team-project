@@ -7,7 +7,12 @@ import java.util.ArrayList;
  */
 public class StudentFactory {
 
-    public Student create(String name, String password, ArrayList<String> courses, ArrayList<String> skills) {
-        return new Student(name, password, courses, skills);
+    public Student create(String name, String password, ArrayList<String> courses,
+                          ArrayList<String> skills, ArrayList<JobGroup> jobGroups) {
+        return new Student(name, password, courses, skills, jobGroups);
+    }
+
+    public Student create(String name, String password) {
+        return new Student(name, password);
     }
 }

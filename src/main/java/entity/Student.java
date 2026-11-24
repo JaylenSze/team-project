@@ -18,7 +18,8 @@ public class Student {
      * @param password the password
      * @throws IllegalArgumentException if the password or name are empty
      */
-    public Student(String name, String password, ArrayList<String> courses, ArrayList<String> skills) {
+    public Student(String name, String password, ArrayList<String> courses,
+                   ArrayList<String> skills, ArrayList<JobGroup> jobGroups) {
         if ("".equals(name)) {
             throw new IllegalArgumentException("Username cannot be empty");
         }
@@ -29,6 +30,20 @@ public class Student {
         this.password = password;
         this.courses = new ArrayList<>(courses);
         this.skills = new ArrayList<>(skills);
+        this.jobGroups = new ArrayList<>(jobGroups);
+    }
+
+    public Student(String name, String password) {
+        if ("".equals(name)) {
+            throw new IllegalArgumentException("Username cannot be empty");
+        }
+        if ("".equals(password)) {
+            throw new IllegalArgumentException("Password cannot be empty");
+        }
+        this.name = name;
+        this.password = password;
+        this.courses = new ArrayList<>();
+        this.skills = new ArrayList<>();
         this.jobGroups = new ArrayList<>();
     }
 

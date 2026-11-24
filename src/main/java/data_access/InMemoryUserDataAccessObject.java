@@ -7,6 +7,8 @@ import use_case.signup.SignupUserDataAccessInterface;
 import use_case.job_grouping.CreateJobGroupDataAccessInterface;
 import use_case.course_analysis.AnalysisDataAccessInterface;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -120,6 +122,7 @@ public class InMemoryUserDataAccessObject implements SignupUserDataAccessInterfa
                              + "  }]%n"
                              + "}%n", safePrompt);
 
+
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(BASE_URL))
                 .header("x-goog-api-key", EnvConfig.get("API_KEY"))
@@ -130,6 +133,21 @@ public class InMemoryUserDataAccessObject implements SignupUserDataAccessInterfa
                 .build();
 
         try {
+            String apiKey = Files.readAllLines(Path.of(".env")).stream()
+                    .filter(line -> line.startsWith("API_KEY="))
+                    .map(line -> line.substring("API_KEY=".length()).replace("\"", ""))
+                    .findFirst()
+                    .orElse(null);
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(BASE_URL))
+                    .header("x-goog-api-key", apiKey)
+                    .header("Content-Type", "application/json")
+                    .timeout(Duration.ofSeconds(10))
+                    .POST(HttpRequest.BodyPublishers.ofString(jsonPayload))
+                    .GET()
+                    .build();
+
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             return response.body();

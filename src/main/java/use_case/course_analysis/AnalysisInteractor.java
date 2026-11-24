@@ -41,7 +41,7 @@ public class AnalysisInteractor implements AnalysisInputBoundary {
             }
 
             final Student updatedStudent = studentFactory.create(student.getName(),
-                    student.getPassword(), student.getCourses(), skills);
+                    student.getPassword(), student.getCourses(), skills, student.getJobGroups());
 
             skillDataAccessObject.changeSkills(updatedStudent);
 

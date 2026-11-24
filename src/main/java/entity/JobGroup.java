@@ -38,4 +38,9 @@ public class JobGroup {
             jobs.add(job);
         }
     }
+
+    @Override
+    public String toString() {
+        return "JobGroup{" + "name=" + name + ", jobs=" + jobs + '}';
+    }
 }
