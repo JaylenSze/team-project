@@ -123,6 +123,14 @@ public class InMemoryUserDataAccessObject implements SignupUserDataAccessInterfa
                              + "}%n", safePrompt);
 
 
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(BASE_URL))
+                .header("x-goog-api-key", EnvConfig.get("API_KEY"))
+                .header("Content-Type", "application/json")
+                .timeout(Duration.ofSeconds(10))
+                .POST(HttpRequest.BodyPublishers.ofString(jsonPayload))
+                .GET()
+                .build();
 
         try {
             String apiKey = Files.readAllLines(Path.of(".env")).stream()
