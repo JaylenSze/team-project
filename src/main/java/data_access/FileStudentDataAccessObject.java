@@ -24,7 +24,6 @@ public class FileStudentDataAccessObject implements SignupUserDataAccessInterfac
                                                  SkillDataAccessInterface,
                                                  CreateJobGroupDataAccessInterface,
                                                  AddCourseDataAccessInterface,
-                                                 CourseValidator,
                                                  JobMatchStudentDataAccessInterface {
 
 
@@ -148,14 +147,4 @@ public class FileStudentDataAccessObject implements SignupUserDataAccessInterfac
         accounts.put(student.getName(), student);
         save();
     }
-
-    /**
-     * Placeholder that accepts every correctly formatted course code.
-     * TODO: check the course against the UofT course API.
-     */
-    @Override
-    public boolean courseExists(String courseCode) {
-        return true;
-    }
-
 }
