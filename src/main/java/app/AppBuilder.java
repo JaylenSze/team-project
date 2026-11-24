@@ -134,6 +134,11 @@ public class AppBuilder {
 
         cardPanel.add(createJobGroupView, CreateJobGroupViewModel.VIEW_NAME);
 
+        loggedInView.setViewManagerModel(viewManagerModel);
+        loggedInView.setCreateJobGroupViewModel(createJobGroupViewModel);
+
+        createJobGroupView.setViewManagerModel(viewManagerModel);
+
         return this;
     }
 

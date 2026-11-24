@@ -3,11 +3,11 @@ package use_case.job_grouping;
 import entity.Job;
 import entity.JobGroup;
 import entity.Student;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CreateJobGroupInteractorTest {
 
@@ -34,7 +34,7 @@ public class CreateJobGroupInteractorTest {
                 new CreateJobGroupDataAccessInterface() {
 
                     @Override
-                    public Student getStudent(String username) {
+                    public Student get(String username) {
                         if ("Paul".equals(username)) {
                             return student;
                         }
@@ -83,7 +83,7 @@ public class CreateJobGroupInteractorTest {
                 new CreateJobGroupDataAccessInterface() {
 
                     @Override
-                    public Student getStudent(String username) {
+                    public Student get(String username) {
                         return null;
                     }
 

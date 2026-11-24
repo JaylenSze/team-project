@@ -5,6 +5,8 @@ import interface_adapter.job_grouping.CreateJobGroupController;
 import interface_adapter.job_grouping.CreateJobGroupState;
 import interface_adapter.job_grouping.CreateJobGroupViewModel;
 import interface_adapter.job_grouping.CreateJobGroupViewModelListener;
+import interface_adapter.ViewManagerModel;
+import interface_adapter.logged_in.LoggedInViewModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,6 +28,9 @@ public class CreateJobGroupView extends JPanel
 
     private final JButton createGroup;
     private CreateJobGroupController controller;
+
+    private final JButton back;
+    private ViewManagerModel viewManagerModel;
 
     /**
      * Creates the Create Job Group View.
@@ -57,6 +62,7 @@ public class CreateJobGroupView extends JPanel
         final JScrollPane jobScrollPane = new JScrollPane(jobList);
 
         createGroup = new JButton("Create Group");
+        back = new JButton("Back");
 
         createGroup.addActionListener(evt -> {
             ArrayList<Job> selectedJobs = new ArrayList<>();
@@ -75,6 +81,13 @@ public class CreateJobGroupView extends JPanel
             }
         });
 
+        back.addActionListener(evt -> {
+            if (viewManagerModel != null) {
+                viewManagerModel.setState(LoggedInViewModel.VIEW_NAME);
+                viewManagerModel.notifyViewChanged();
+            }
+        });
+
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(title);
@@ -82,7 +95,11 @@ public class CreateJobGroupView extends JPanel
         this.add(new JLabel("Select Jobs"));
         this.add(jobScrollPane);
         this.add(messageField);
-        this.add(createGroup);
+        final JPanel buttons = new JPanel();
+        buttons.add(createGroup);
+        buttons.add(back);
+
+        this.add(buttons);
     }
 
     @Override
@@ -100,5 +117,9 @@ public class CreateJobGroupView extends JPanel
 
     public void setController(CreateJobGroupController controller) {
         this.controller = controller;
+    }
+
+    public void setViewManagerModel(ViewManagerModel viewManagerModel) {
+        this.viewManagerModel = viewManagerModel;
     }
 }

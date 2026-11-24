@@ -7,6 +7,8 @@ import interface_adapter.logged_in.LoggedInViewModel;
 import interface_adapter.logged_in.LoggedInViewModelListener;
 import interface_adapter.logout.LogoutController;
 import interface_adapter.skills_list.SkillListController;
+import interface_adapter.ViewManagerModel;
+import interface_adapter.job_grouping.CreateJobGroupViewModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,6 +25,9 @@ public class LoggedInView extends JPanel implements ActionListener, LoggedInView
     private AddCourseController addCourseController;
     private SkillListController skillListController;
     private JobListController jobListController;
+    private final JButton jobGroups;
+    private ViewManagerModel viewManagerModel;
+    private CreateJobGroupViewModel createJobGroupViewModel;
 
     private final JLabel username;
 
@@ -52,6 +57,9 @@ public class LoggedInView extends JPanel implements ActionListener, LoggedInView
         navigation.add(viewSkills);
         navigation.add(viewJobs);
 
+        jobGroups = new JButton("Job Groups");
+        navigation.add(jobGroups);
+
         addCourses.addActionListener(evt -> {
             if (addCourseController != null) {
                 addCourseController.switchToAddCourseView();
@@ -65,6 +73,18 @@ public class LoggedInView extends JPanel implements ActionListener, LoggedInView
         viewJobs.addActionListener(evt -> {
             if (jobListController != null) {
                 jobListController.execute(loggedInViewModel.getState().getUsername());
+            }
+        });
+
+        jobGroups.addActionListener(evt -> {
+            final LoggedInState currentState = loggedInViewModel.getState();
+
+            if (viewManagerModel != null && createJobGroupViewModel != null) {
+                createJobGroupViewModel.getState().setUsername(
+                        currentState.getUsername());
+
+                viewManagerModel.setState(CreateJobGroupViewModel.VIEW_NAME);
+                viewManagerModel.notifyViewChanged();
             }
         });
 
@@ -102,6 +122,15 @@ public class LoggedInView extends JPanel implements ActionListener, LoggedInView
 
     public void setLogoutController(LogoutController logoutController) {
         this.logoutController = logoutController;
+    }
+
+    public void setViewManagerModel(ViewManagerModel viewManagerModel) {
+        this.viewManagerModel = viewManagerModel;
+    }
+
+    public void setCreateJobGroupViewModel(
+            CreateJobGroupViewModel createJobGroupViewModel) {
+        this.createJobGroupViewModel = createJobGroupViewModel;
     }
 
     /**
