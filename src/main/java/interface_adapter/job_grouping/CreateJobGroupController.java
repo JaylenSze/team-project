@@ -34,4 +34,8 @@ public class CreateJobGroupController {
 
         createJobGroupInteractor.execute(inputData);
     }
+
+    public void viewJobGroups(String username) {
+        createJobGroupInteractor.viewJobGroups(username);
+    }
 }

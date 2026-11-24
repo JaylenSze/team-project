@@ -1,6 +1,7 @@
 package view;
 
 import entity.Job;
+import entity.JobGroup;
 import interface_adapter.job_grouping.CreateJobGroupController;
 import interface_adapter.job_grouping.CreateJobGroupState;
 import interface_adapter.job_grouping.CreateJobGroupViewModel;
@@ -31,6 +32,8 @@ public class CreateJobGroupView extends JPanel
 
     private final JButton back;
     private ViewManagerModel viewManagerModel;
+
+    private final JTextArea existingGroups = new JTextArea(10, 30);
 
     /**
      * Creates the Create Job Group View.
@@ -88,12 +91,19 @@ public class CreateJobGroupView extends JPanel
             }
         });
 
+        existingGroups.setEditable(false);
+
+        final JScrollPane groupsScrollPane =
+                new JScrollPane(existingGroups);
+
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(title);
         this.add(groupNameInfo);
         this.add(new JLabel("Select Jobs"));
         this.add(jobScrollPane);
+        this.add(new JLabel("Existing Job Groups"));
+        this.add(groupsScrollPane);
         this.add(messageField);
         final JPanel buttons = new JPanel();
         buttons.add(createGroup);
@@ -107,11 +117,34 @@ public class CreateJobGroupView extends JPanel
         final CreateJobGroupState state = viewModel.getState();
 
         if (state.isSuccess()) {
-            messageField.setText(
-                    "Successfully created group: " + state.getGroupName());
-        }
-        else {
+            if (state.getGroupName() != null) {
+                messageField.setText(
+                        "Successfully created group: " + state.getGroupName());
+            } else {
+                messageField.setText("");
+            }
+
+            existingGroups.setText("");
+
+            for (JobGroup group : state.getJobGroups()) {
+                existingGroups.append(group.getName() + "\n");
+
+                for (Job job : group.getJobs()) {
+                    existingGroups.append(
+                            "    - " + job.getTitle()
+                                    + " - " + job.getCompany() + "\n");
+                }
+
+                existingGroups.append("\n");
+            }
+
+            if (state.getJobGroups().isEmpty()) {
+                existingGroups.setText("No existing job groups.");
+            }
+
+        } else {
             messageField.setText(state.getErrorMessage());
+            existingGroups.setText("");
         }
     }
 

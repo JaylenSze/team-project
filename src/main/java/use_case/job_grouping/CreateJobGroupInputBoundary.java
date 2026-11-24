@@ -1,13 +1,15 @@
 package use_case.job_grouping;
 
 /**
- * The input boundary for the Create Job Group use case.
+ * Input boundary for the Job Grouping use case.
  */
 public interface CreateJobGroupInputBoundary {
 
-    /**
-     * Executes the Create Job Group use case.
-     * @param createJobGroupInputData the input data
-     */
     void execute(CreateJobGroupInputData createJobGroupInputData);
+
+    /**
+     * Retrieves all existing job groups for a student.
+     * @param username the student's username
+     */
+    void viewJobGroups(String username);
 }

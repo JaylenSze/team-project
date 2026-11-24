@@ -23,6 +23,7 @@ public class CreateJobGroupPresenter implements CreateJobGroupOutputBoundary {
         final CreateJobGroupState state = viewModel.getState();
 
         state.setGroupName(outputData.getGroupName());
+        state.setJobGroups(outputData.getJobGroups());
         state.setErrorMessage(null);
         state.setSuccess(true);
 

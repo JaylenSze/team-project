@@ -227,6 +227,7 @@ public class AppBuilder {
                 new CreateJobGroupController(interactor);
 
         createJobGroupView.setController(controller);
+        loggedInView.setCreateJobGroupController(controller);
 
         return this;
     }

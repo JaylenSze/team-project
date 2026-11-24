@@ -50,9 +50,34 @@ public class CreateJobGroupInteractor implements CreateJobGroupInputBoundary {
             userDataAccessObject.save(student);
 
             final CreateJobGroupOutputData outputData =
-                    new CreateJobGroupOutputData(jobGroup.getName());
+                    new CreateJobGroupOutputData(
+                            jobGroup.getName(),
+                            student.getJobGroups()
+                    );
 
             userPresenter.prepareSuccessView(outputData);
         }
+    }
+
+    /**
+     * Retrieves all existing job groups for a student.
+     * @param username the student's username
+     */
+    @Override
+    public void viewJobGroups(String username) {
+        final Student student = userDataAccessObject.get(username);
+
+        if (student == null) {
+            userPresenter.prepareFailView("Student not found");
+            return;
+        }
+
+        final CreateJobGroupOutputData outputData =
+                new CreateJobGroupOutputData(
+                        null,
+                        student.getJobGroups()
+                );
+
+        userPresenter.prepareSuccessView(outputData);
     }
 }

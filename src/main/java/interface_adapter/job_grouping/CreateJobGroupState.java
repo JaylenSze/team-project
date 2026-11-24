@@ -1,5 +1,8 @@
 package interface_adapter.job_grouping;
 
+import entity.JobGroup;
+import java.util.ArrayList;
+
 /**
  * The state for the Create Job Group View Model.
  */
@@ -9,6 +12,7 @@ public class CreateJobGroupState {
     private String errorMessage;
     private boolean success;
     private String username = "";
+    private ArrayList<JobGroup> jobGroups = new ArrayList<>();
 
     public String getGroupName() {
         return groupName;
@@ -40,6 +44,14 @@ public class CreateJobGroupState {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public ArrayList<JobGroup> getJobGroups() {
+        return new ArrayList<>(jobGroups);
+    }
+
+    public void setJobGroups(ArrayList<JobGroup> jobGroups) {
+        this.jobGroups = new ArrayList<>(jobGroups);
     }
 
 }

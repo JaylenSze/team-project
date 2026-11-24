@@ -9,6 +9,7 @@ import interface_adapter.logout.LogoutController;
 import interface_adapter.skills_list.SkillListController;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.job_grouping.CreateJobGroupViewModel;
+import interface_adapter.job_grouping.CreateJobGroupController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,6 +29,7 @@ public class LoggedInView extends JPanel implements ActionListener, LoggedInView
     private final JButton jobGroups;
     private ViewManagerModel viewManagerModel;
     private CreateJobGroupViewModel createJobGroupViewModel;
+    private CreateJobGroupController createJobGroupController;
 
     private final JLabel username;
 
@@ -79,9 +81,14 @@ public class LoggedInView extends JPanel implements ActionListener, LoggedInView
         jobGroups.addActionListener(evt -> {
             final LoggedInState currentState = loggedInViewModel.getState();
 
-            if (viewManagerModel != null && createJobGroupViewModel != null) {
-                createJobGroupViewModel.getState().setUsername(
-                        currentState.getUsername());
+            if (viewManagerModel != null && createJobGroupViewModel != null
+                    && createJobGroupController != null) {
+
+                final String username = currentState.getUsername();
+
+                createJobGroupViewModel.getState().setUsername(username);
+
+                createJobGroupController.viewJobGroups(username);
 
                 viewManagerModel.setState(CreateJobGroupViewModel.VIEW_NAME);
                 viewManagerModel.notifyViewChanged();
@@ -131,6 +138,11 @@ public class LoggedInView extends JPanel implements ActionListener, LoggedInView
     public void setCreateJobGroupViewModel(
             CreateJobGroupViewModel createJobGroupViewModel) {
         this.createJobGroupViewModel = createJobGroupViewModel;
+    }
+
+    public void setCreateJobGroupController(
+            CreateJobGroupController createJobGroupController) {
+        this.createJobGroupController = createJobGroupController;
     }
 
     /**
