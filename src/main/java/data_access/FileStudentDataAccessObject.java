@@ -1,5 +1,6 @@
 package data_access;
 
+import entity.JobGroup;
 import entity.Student;
 import entity.StudentFactory;
 import use_case.add_course.AddCourseDataAccessInterface;
@@ -12,10 +13,7 @@ import use_case.signup.SignupUserDataAccessInterface;
 import use_case.job_grouping.CreateJobGroupDataAccessInterface;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * DAO for student data implemented using a File to persist the data.
@@ -49,6 +47,9 @@ public class FileStudentDataAccessObject implements SignupUserDataAccessInterfac
         csvFile = new File(csvPath);
         headers.put("username", 0);
         headers.put("password", 1);
+        headers.put("courses", 2);
+        headers.put("skills", 3);
+        headers.put("jobs", 4);
 
         if (csvFile.length() == 0) {
             save();
@@ -67,9 +68,21 @@ public class FileStudentDataAccessObject implements SignupUserDataAccessInterfac
                     final String[] col = row.split(",");
                     final String username = String.valueOf(col[headers.get("username")]);
                     final String password = String.valueOf(col[headers.get("password")]);
-                    // temporary fix, i dont want to see the big red lines
-                    final Student student = studentFactory.create(username, password,
-                            new ArrayList<>(), new ArrayList<>());
+
+                    final String[] courseCodes = String.valueOf(col[headers.get("courses")]).split(";");
+
+                    final ArrayList<String> courses = new ArrayList<>(Arrays.asList(courseCodes));
+
+                    final String[] skillsNames = String.valueOf(col[headers.get("skills")]).split(";");
+                    final ArrayList<String> skills = new ArrayList<>(Arrays.asList(skillsNames));
+
+                    final String[] jobsNames = String.valueOf(col[headers.get("jobs")]).split(";");
+                    final ArrayList<JobGroup> jobGroups = new ArrayList<>();
+                    for (final String name : jobsNames) {
+                        jobGroups.add(new JobGroup(name.trim(), new ArrayList<>()));
+                    }
+
+                    final Student student = studentFactory.create(username, password, courses, skills, jobGroups);
                     accounts.put(username, student);
                 }
             }
@@ -87,9 +100,11 @@ public class FileStudentDataAccessObject implements SignupUserDataAccessInterfac
             writer.newLine();
 
             for (Student student : accounts.values()) {
-                final String line = String.format("%s,%s,%s,%s",
+                final String line = String.format("%s,%s,%s,%s,%s",
                         student.getName(), student.getPassword(),
-                        student.getCourses().toString(), student.getSkills().toString());
+                        String.join(";", student.getCourses()),
+                        String.join(";", student.getSkills()),
+                        String.join(";", student.getJobGroups().stream().map(Object::toString).toList()));
                 writer.write(line);
                 writer.newLine();
             }
@@ -104,7 +119,7 @@ public class FileStudentDataAccessObject implements SignupUserDataAccessInterfac
 
     @Override
     public void save(Student student) {
-        accounts.put(student.getName(), student);
+        accounts.put(student.getName(),student);
         this.save();
     }
 
